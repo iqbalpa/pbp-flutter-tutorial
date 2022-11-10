@@ -198,12 +198,12 @@ class _MyFormPageState extends State<MyFormPage> {
                   secondary: const Icon(Icons.run_circle_outlined),
                 ),
                 TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
                   child: const Text(
                     "Simpan",
                     style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -227,6 +227,18 @@ class _MyFormPageState extends State<MyFormPage> {
                                           Text('Nama: ' + _namaLengkap),
                                           Text('Umur: ' + umur.toString()),
                                           Text('Kelas: ' + kelasPBP),
+                                          Text('Jenjang: ' +
+                                              (jenjangSarjana
+                                                  ? 'Sarjana'
+                                                  : jenjangDiploma
+                                                      ? 'Diploma'
+                                                      : jenjangMagister
+                                                          ? 'Magister'
+                                                          : 'Doktor')),
+                                          Text('Practice Mode: ' +
+                                              (_nilaiSwitch
+                                                  ? 'Aktif'
+                                                  : 'Tidak Aktif')),
                                         ],
                                       ),
                                     ),
