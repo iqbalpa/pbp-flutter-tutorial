@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:lab_flutter/model/to_do.dart';
 import 'package:lab_flutter/page/form.dart';
 import 'package:lab_flutter/main.dart';
+import 'package:lab_flutter/function/fetch_to_do.dart';
 
 class ToDoPage extends StatefulWidget {
   const ToDoPage({super.key});
@@ -13,27 +14,10 @@ class ToDoPage extends StatefulWidget {
 }
 
 class _ToDoPageState extends State<ToDoPage> {
-  Future<List<ToDo>> fetchToDo() async {
-    var url = Uri.parse(
-        'https://jsonplaceholder.typicode.com/todos?_start=0&_limit=10');
-    var response = await http.get(url, headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-    });
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-    List<ToDo> listToDo = [];
-    for (var d in data) {
-      if (d != null) {
-        listToDo.add(ToDo.fromJson(d));
-      }
-    }
-    return listToDo;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('To DO')),
+      appBar: AppBar(title: const Text('To Do')),
       drawer: Drawer(
         child: Column(
           children: [
